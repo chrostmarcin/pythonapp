@@ -56,7 +56,7 @@ pipeline {
             steps {
                 script {
 
-
+                    sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
                 }          
             }
