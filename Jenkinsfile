@@ -31,7 +31,7 @@ pipeline {
         stage ('Testing Container') {
             steps {
                 script {
-                    sh 'docker run  -it --rm -d --name nginx -p 8281:80 chrostmarcin/nginx'
+                    sh 'docker run  -it --rm -d --name nginx -p 8181:80 chrostmarcin/nginx'
                     sh 'curl 192.168.68.120:8181'
                     sh 'docker rm -f nginx'
                     }
@@ -43,8 +43,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', registryCredential ) {
-                        sh 'docker tag chrostmarcin/nginx chrostmarcin/nginx:1.3'
-                        sh 'docker push chrostmarcin/nginx:1.3'
+                        sh 'docker tag chrostmarcin/nginx chrostmarcin/nginx:1.4'
+                        sh 'docker push chrostmarcin/nginx:1.4'
                     }
                 }    
             }
