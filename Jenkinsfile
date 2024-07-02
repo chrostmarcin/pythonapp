@@ -37,7 +37,7 @@ pipeline {
                     }
                 }    
             }
-        }
+        
         
         stage ('Uploading Image') {
             steps {
@@ -49,5 +49,6 @@ pipeline {
                 }    
             }
         }
+    }
 }
 
