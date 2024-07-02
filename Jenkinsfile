@@ -10,6 +10,8 @@ pipeline {
         dockerImage =''
         registry = 'chrostmarcin/nginx'
         registryCredential ='docker_id'
+        pass = 'applewatch1!@'
+        user = 'chrost.marcin@gmail.com'
     }
     
     stages {
@@ -81,7 +83,7 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
-                        sh "git push https://github.com/chrostmarcin/html.git"
+                        sh "git push $user:$pass@https://github.com/chrostmarcin/html.git"
                         
                         
                          }
