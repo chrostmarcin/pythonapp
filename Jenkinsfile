@@ -81,7 +81,7 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
-                        sh "git push https://github.com/chrostmarcin/html.git main"
+                        sh "git push https://github.com/chrostmarcin/html.git"
                         
                         
                          }
