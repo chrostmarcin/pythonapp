@@ -60,6 +60,9 @@ pipeline {
                     sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
                     git branch: 'main', credentialsId: 'git_id', url: 'git@github.com:chrostmarcin/html.git'
+                    sh """
+                    git config --global user.name "chrost.marcin"
+                    git config --global user.email "chrost.marcin@gmail.com" """
                     dir('html') {
 
                         sh "pwd"
@@ -70,40 +73,12 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
+                    }
                 }          
             }
         }  
 
-        stage('Make yaml files changes & push them to Guthub'){
-            steps {
-                script{
-                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    
-                     sh """
-                    git config --global user.name "chrost.marcin"
-                    git config --global user.email "chrost.marcin@gmail.com" """
-                   
-                      dir('html') {
 
-                        sh "pwd"
-                        sh "echo $BUILD_NUMBER"
-                        sh "ls -alh"
-                        sh "cat index.html"
-                        sh "echo new >> index.html"
-                        sh "cat index.html"
-                        sh " git add . "
-                        sh " git commit -m 'Updated the deployment file'"
-                 
-                        
-                        //sh "git push git@github.com:chrostmarcin/html.git"
-                        
-                        
-                         }
-             
-                    }
-                }
-            }
-        }
           
     }
 }
