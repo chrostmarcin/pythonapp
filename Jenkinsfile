@@ -31,7 +31,7 @@ pipeline {
         stage ('Testing Container') {
             steps {
                 script {
-                    sh 'docker run  -it --rm -d --name nginx -p 8181:80 chrostmarcin/nginx'
+                    sh 'docker run  -it --rm -d --name nginx -p 8281:80 chrostmarcin/nginx'
                     sh 'curl 192.168.68.120:8181'
                     sh 'docker rm -f nginx'
                     }
