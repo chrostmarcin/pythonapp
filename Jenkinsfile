@@ -2,6 +2,10 @@ pipeline {
     
     agent any
     
+    triggers {
+        pollSCM '0/5 * * * *'
+    }
+
     environment {
         dockerImage =''
         registry = 'chrostmarcin/nginx'
