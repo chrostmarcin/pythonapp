@@ -83,7 +83,12 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
-                        sh "git push git@github.com:chrostmarcin/html.git"
+                        withCredentials([
+                                gitUsernamePassword(credentialsId: 'git_id', gitToolName: 'Default')
+                            ]) {
+                                sh "git push"
+                            }
+                        //sh "git push git@github.com:chrostmarcin/html.git"
                         
                         
                          }
