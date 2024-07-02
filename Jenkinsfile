@@ -50,6 +50,20 @@ pipeline {
                 }    
             }
         }
+        stage('Github clone the html yaml'){
+            steps {
+                script{
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+              sh "git clone https://github.com/chrostmarcin/html.git"
+              
+            
+             
+                    }
+                  }
+                }
+            }
+        }
     }
 }
 
