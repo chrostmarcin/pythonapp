@@ -2,9 +2,9 @@ pipeline {
     
     agent any
     
-    triggers {
-        pollSCM '*/5 * * * *'
-    }
+    //triggers {
+    //    pollSCM '*/5 * * * *'
+   // }
 
     environment {
         dockerImage =''
