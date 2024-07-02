@@ -75,7 +75,7 @@ pipeline {
                         sh "pwd"
                         sh "echo $BUILD_NUMBER"
                         sh "ls -alh"
-                       
+                        sh "cat index.html"
              
                         
                         }
