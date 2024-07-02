@@ -10,8 +10,7 @@ pipeline {
         dockerImage =''
         registry = 'chrostmarcin/nginx'
         registryCredential ='docker_id'
-        pass = 'applewatch1!@'
-        user = 'chrost.marcin@gmail.com'
+        GIT_SSH_COMMAND = 'ssh -o StrictHostKeyChecking=no' // Skip host key checking
     }
     
     stages {
