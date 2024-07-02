@@ -60,7 +60,31 @@ pipeline {
                     sh "git clone https://github.com/chrostmarcin/html.git"
                 }          
             }
-        }     
+        }  
+
+        stage('Make yaml files changes & push them to Guthub'){
+            steps {
+                script{
+                  catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    
+                     sh """
+                    git config --global user.name "chrost.marcin"
+                    git config --global user.email "chrost.marcin@gmail.com" """
+                   
+                      dir('html') {
+                        sh "pwd"
+                        sh "echo $BUILD_NUMBER"
+                        sh "ls -alh"
+                       
+             
+                        
+                        }
+             
+                    }
+                }
+            }
+        }
+          
     }
 }
 
