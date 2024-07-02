@@ -60,6 +60,16 @@ pipeline {
                     sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
                     git branch: 'main', credentialsId: 'git_id', url: 'git@github.com:chrostmarcin/html.git'
+                    dir('html') {
+
+                        sh "pwd"
+                        sh "echo $BUILD_NUMBER"
+                        sh "ls -alh"
+                        sh "cat index.html"
+                        sh "echo new >> index.html"
+                        sh "cat index.html"
+                        sh " git add . "
+                        sh " git commit -m 'Updated the deployment file'"
                 }          
             }
         }  
@@ -83,11 +93,8 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
-                        withCredentials([
-                                gitUsernamePassword(credentialsId: 'git_id', gitToolName: 'Default')
-                            ]) {
-                                sh "git push"
-                            }
+                 
+                        
                         //sh "git push git@github.com:chrostmarcin/html.git"
                         
                         
