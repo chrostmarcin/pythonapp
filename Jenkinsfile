@@ -72,13 +72,19 @@ pipeline {
                     git config --global user.email "chrost.marcin@gmail.com" """
                    
                       dir('html') {
+
                         sh "pwd"
                         sh "echo $BUILD_NUMBER"
                         sh "ls -alh"
                         sh "cat index.html"
-             
+                        sh "echo new >> index.html"
+                        sh "cat index.html"
+                        sh " git add . "
+                        sh " git commit -m 'Updated the deployment file'"
+                        sh "git push https://github.com/chrostmarcin/html.git main"
                         
-                        }
+                        
+                         }
              
                     }
                 }
