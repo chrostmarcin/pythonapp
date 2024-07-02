@@ -60,7 +60,7 @@ pipeline {
 
                     sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
-                    sh "git branch: 'main', credentialsId: 'git', url: 'git@github.com:chrostmarcin/html.git'"
+                    git branch: 'main', credentialsId: 'git', url: 'git@github.com:chrostmarcin/html.git'
                 }          
             }
         }  
