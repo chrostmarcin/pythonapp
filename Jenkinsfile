@@ -60,6 +60,7 @@ pipeline {
 
                     sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
+                    sh "git branch: 'main', credentialsId: 'git', url: 'git@github.com:chrostmarcin/html.git'"
                 }          
             }
         }  
@@ -83,7 +84,7 @@ pipeline {
                         sh "cat index.html"
                         sh " git add . "
                         sh " git commit -m 'Updated the deployment file'"
-                        sh "git push $user:$pass@https://github.com/chrostmarcin/html.git"
+                        sh "git push"
                         
                         
                          }
