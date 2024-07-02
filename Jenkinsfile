@@ -45,7 +45,7 @@ pipeline {
                 script {
                     docker.withRegistry('', registryCredential ) {
                         sh "docker tag chrostmarcin/nginx:'$BUILD_NUMBER' chrostmarcin/nginx:'$BUILD_NUMBER'"
-                        sh 'docker push chrostmarcin/nginx:'$BUILD_NUMBER''
+                        sh "docker push chrostmarcin/nginx:'$BUILD_NUMBER'"
                     }
                 }    
             }
