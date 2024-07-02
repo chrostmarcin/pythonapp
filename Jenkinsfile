@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f nginx 2>@1>/dev/null'
-                    sh "docker run  -it --rm -d --name nginx -p 8181:80 chrostmarcin/nginx + ':$BUILD_NUMBER'"
+                    sh "docker run  -it --rm -d --name nginx -p 8181:80 chrostmarcin/nginx:'$BUILD_NUMBER'"
                     sh 'curl 192.168.68.120:8181'
                     sh 'docker rm -f nginx'
                     }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', registryCredential ) {
-                        sh "docker tag chrostmarcin/nginx + ':$BUILD_NUMBER' chrostmarcin/nginx:1.4"
+                        sh "docker tag chrostmarcin/nginx:'$BUILD_NUMBER' chrostmarcin/nginx:1.4"
                         sh 'docker push chrostmarcin/nginx:1.4'
                     }
                 }    
