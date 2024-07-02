@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', registryCredential ) {
-                        sh "docker tag chrostmarcin/nginx + ":$BUILD_NUMBER" chrostmarcin/nginx:1.4"
+                        sh "docker tag chrostmarcin/nginx + ':$BUILD_NUMBER' chrostmarcin/nginx:1.4"
                         sh 'docker push chrostmarcin/nginx:1.4'
                     }
                 }    
