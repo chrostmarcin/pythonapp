@@ -24,7 +24,7 @@ pipeline {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                                   
-                     }
+                }
             }
         }
 
@@ -35,9 +35,9 @@ pipeline {
                     sh "docker run  -it --rm -d --name nginx -p 8181:80 chrostmarcin/nginx:'$BUILD_NUMBER'"
                     sh 'curl 192.168.68.120:8181'
                     sh 'docker rm -f nginx'
-                    }
-                }    
-            }
+                }
+            }    
+        }
         
         
         stage ('Uploading Image') {
@@ -50,19 +50,17 @@ pipeline {
                 }    
             }
         }
-        stage('Github clone the html yaml'){
+
+
+        stage ('Github clone the html yaml') {
             steps {
-                script{
+                script {
+
 
                     sh "git clone https://github.com/chrostmarcin/html.git"
-              
-            
-             
-                    }
-                  }
-                }
+                }          
             }
-        }
+        }     
     }
 }
 
