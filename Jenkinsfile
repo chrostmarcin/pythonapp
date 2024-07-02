@@ -73,7 +73,7 @@ pipeline {
                         sh "cat index.html"
                         sh "git add . "
                         sh "git commit -m 'Updated the deployment file'"
-                        git push git@github.com:chrostmarcin/html.git
+                        sh "git push https://github.com/chrostmarcin/html.git"
                     }
                 }          
             }
