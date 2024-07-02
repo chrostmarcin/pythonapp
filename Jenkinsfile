@@ -2,6 +2,9 @@ pipeline {
     
     agent any
     
+    triggers {
+        pollSCM '*/5 * * * *'
+    }
 
     environment {
         dockerImage =''
@@ -29,8 +32,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', registryCredential ) {
-                        sh 'docker tag chrostmarcin/nginx chrostmarcin/nginx:1.2'
-                        sh 'docker push chrostmarcin/nginx:1.2'
+                        sh 'docker tag chrostmarcin/nginx chrostmarcin/nginx:1.3'
+                        sh 'docker push chrostmarcin/nginx:1.3'
                     }
                 }    
             }
