@@ -73,7 +73,7 @@ pipeline {
                             sh "sed -i -e 's/nginx:.*/nginx:$BUILD_NUMBER/' deployment.yaml"
                             sh "cat deployment.yaml"
                             sh "cat index.html"
-                            sh "COUNT= "$(($BUILD_NUMBER + 1))""
+                            sh "COUNT= "$(("$BUILD_NUMBER" + 1))""
                             sh "sed -i -e 's/nginx.*/nginx:$COUNT/' index.html"
                             sh "cat index.html"
                             sh "git add . "
