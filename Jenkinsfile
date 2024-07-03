@@ -59,21 +59,24 @@ pipeline {
 
                     sh "rm -rf html/ 2>@1>/dev/null"    
                     sh "git clone https://github.com/chrostmarcin/html.git"
-                    git branch: 'main', credentialsId: 'git_id', url: 'git@github.com:chrostmarcin/html.git'
-                    sh """
-                    git config --global user.name "chrost.marcin"
-                    git config --global user.email "chrost.marcin@gmail.com" """
-                    dir('html') {
+                    git branch: 'master', credentialsId: 'git_id', url: 'git@github.com:chrostmarcin/html.git'
+                   
+                    sh 'git config --global user.name "chrost.marcin"'
+                    sh 'git config --global user.email "chrost.marcin@gmail.com"'
+                    sshagent (credentials: ['git_id']) {
+                        dir('html') {
 
-                        sh "pwd"
-                        sh "echo $BUILD_NUMBER"
-                        sh "ls -alh"
-                        sh "cat index.html"
-                        sh "echo new >> index.html"
-                        sh "cat index.html"
-                        sh "git add . "
-                        sh "git commit -m 'Updated the deployment file'"
-                        sh "git push https://github.com/chrostmarcin/html.git"
+                            sh "pwd"
+                            sh "echo $BUILD_NUMBER"
+                            sh "ls -alh"
+                            sh "cat index.html"
+                            sh "echo new >> index.html"
+                            sh "cat index.html"
+                            sh "git add . "
+                            sh 'git commit -m "echo"'
+                            sh 'git remote set-url origin git@github.com:chrostmarcin/html.git'
+                            sh 'git push origin HEAD:master'
+                        }
                     }
                 }          
             }
