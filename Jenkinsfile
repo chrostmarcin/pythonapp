@@ -69,9 +69,9 @@ pipeline {
                             sh "pwd"
                             sh "echo $BUILD_NUMBER"
                             sh "ls -alh"
-                            sh "cat index.html"
-                            sh "echo new >> index.html"
-                            sh "cat index.html"
+                            sh "cat deployment.yaml"
+                            sh " sed -i -e 's/nginx:.*/nginx:$BUILD_NUMBER/' deployment.yaml"
+                            sh "cat deployment.yaml"
                             sh "git add . "
                             sh 'git commit -m "echo"'
                             sh 'git remote set-url origin git@github.com:chrostmarcin/html.git'
